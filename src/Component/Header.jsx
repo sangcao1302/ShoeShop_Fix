@@ -7,18 +7,13 @@ import { history } from "../index.js";
 export default function Header() {
   let { arrCart } = useSelector((state) => state.CartReducer);
   let { login } = useSelector((state) => state.LoginReducer);
-  let [display, setDisplay] = useState("none");
-  let [reloadPage,setReloadPage]=useState(true)
   const handleClick = () => {
     clearStorgaeJson(USER_LOGIN);
     clearStorgaeJson("cart");
     history.push(`/login`);
     window.location.reload();
   };
-  const reload = () => {
-    const reloadAction = window.location.reload();
-    return reloadAction;
-  };
+
   const mobile = () => {
     if (window.innerWidth < 800) {
       return (
@@ -179,14 +174,7 @@ export default function Header() {
       );
     }
   };
-  // useEffect(()=>{
-  //   if(reloadPage===true){
-  //     window.location.reload()
-  //   }
-  //   setTimeout(()=>{
-  //     setReloadPage(false)
-  //   },200)
-  // },[])
+ 
   return (
     <div
       className="container bg-white"
@@ -202,11 +190,7 @@ export default function Header() {
       <nav className="navbar navbar-expand-lg navbar-light w-100">
         <div className="container">
           <NavLink to={"/home"}>
-            <img
-              src="./assets/image/logo.png"
-              className={window.innerWidth < 800 ? "w-75" : "w-100"}
-              alt=""
-              style={{ objectFit: "contain" }}
+            <img src="./assets/image/logo.png" className="w-100" alt=""  style={{ objectFit: "contain" }}
             />
           </NavLink>
           <button
