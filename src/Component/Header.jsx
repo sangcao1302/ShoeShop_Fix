@@ -190,7 +190,7 @@ export default function Header() {
       <nav className="navbar navbar-expand-lg navbar-light w-100">
         <div className="container">
           <NavLink to={"/home"}>
-            <img src="./assets/image/logo.png" className="w-100" alt=""  style={{ objectFit: "contain" }}
+            <img src="./assets/image/Logo.png" className={window.innerWidth < 800 ? "w-75" : "w-100"} alt=""  style={{ objectFit: "contain" }}
             />
           </NavLink>
           <button
