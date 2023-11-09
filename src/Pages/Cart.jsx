@@ -55,7 +55,7 @@ export default function Cart() {
       {
         setError("1")
         setTimeout(()=>{
-          setDisplay("0")
+          setError("0")
         },4000)
       }
       else{
@@ -72,13 +72,13 @@ export default function Cart() {
     }
   return (
     <div className='container' style={{minHeight:"55vh"}}>
-          <div className='d-flex justify-content-end mb-5' style={{opacity:display}}>
+          <div className='d-flex justify-content-end  ' style={{opacity:display,marginTop:"5%"}}>
             <div className="success-msg text-success text-end rounded-3 p-2 d-flex align-items-center" style={{backgroundColor:"#DFF2BF"}} >
               <span className='text-white bg-success rounded-circle  d-flex justify-content-center align-items-center' style={{width:"30px",height:"30px"}}><i className="fa fa-check"></i></span>
-              <span className='mx-2'>{cartPost==="Thêm mới thành công!"?"Success":""}</span>
+              <span className='mx-2'>Success</span>
             </div>
           </div>
-          <div className='d-flex justify-content-end mb-5' style={{opacity:error}}>
+          <div className='d-flex justify-content-end ' style={{opacity:error,marginTop:"5%"}}>
             <div className="alert alert-danger text-success text-end rounded-3 p-2 d-flex align-items-center"  >
               <span className='text-white bg-danger rounded-circle  d-flex justify-content-center p-2 badge' style={{width:"30px",height:"30px"}}>x</span>
               <span className='mx-2 text-danger'>Please Login</span>
