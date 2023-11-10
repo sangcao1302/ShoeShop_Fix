@@ -69,7 +69,7 @@ export default function Header() {
                   data-bs-toggle="dropdown"
                   style={{ display: `${login.length !== 0 ? "" : "none"}` }}
                 >
-                  <i class="fa fa-align-justify"></i>
+                  <i className="fa fa-align-justify"></i>
                 </button>
                 <ul className="dropdown-menu dropdown-menu-end">
                   <li>
@@ -144,7 +144,7 @@ export default function Header() {
               data-bs-toggle="dropdown"
               style={{ display: `${login.length !== 0 ? "" : "none"}` }}
             >
-              <i class="fa fa-align-justify"></i>
+              <i className="fa fa-align-justify"></i>
             </button>
             <ul className="dropdown-menu dropdown-menu-end">
               <li>

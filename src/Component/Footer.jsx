@@ -12,7 +12,7 @@ export default function Footer() {
                 <p className="ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedconsectetur </p>
                 <ul className="social_icon d-flex align-items-center p-0 fs-6" style={{listStyle:"none"}}>
                   <li>Follow:</li>
-                  <li className='bg-white text-dark rounded-circle p-2 badge mx-2 '><i class="fab fa-facebook-f "></i></li>
+                  <li className='bg-white text-dark rounded-circle p-2 badge mx-2 '><i className="fab fa-facebook-f "></i></li>
                   <li className='bg-white text-dark rounded-circle p-2 badge  mx-2'><i className="fab fa-twitter  "/></li>
                   <li className='bg-white text-dark rounded-circle p-2 badge  mx-2'><i className="fab fa-linkedin-in "></i></li>
                 </ul>
