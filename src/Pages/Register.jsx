@@ -12,8 +12,8 @@ export default function Register() {
     
     const [error,setError]=useState({email:"",name:"",phone:"",password:"",passwordCheck:""})
     const [info,setInfo]=useState({email:"",name:"",phone:"",password:"",passwordCheck:""})
-    const [loadingSuccess,setLoadingSucess]=useState("0")
-    const [loadingError,setLoadingError]=useState("0")
+    const [loadingSuccess,setLoadingSucess]=useState("none")
+    const [loadingError,setLoadingError]=useState("none")
     const [inputValue, setInputValue] = useState("");
    
     
@@ -147,15 +147,15 @@ export default function Register() {
     }
     useEffect(()=>{
         if(register==="Email đã được sử dụng!"){
-            setLoadingError("1")
+            setLoadingError("")
             setTimeout(()=>{
-                setLoadingError("0")
+                setLoadingError("none")
             },2000)
         }
         if(register==="Đăng ký tài khoản thành công!"){
-            setLoadingSucess("1")
+            setLoadingSucess("")
             setTimeout(()=>{
-                setLoadingSucess("0")
+                setLoadingSucess("none")
                 history.push("/login")
                 window.location.reload()
             },2000)
@@ -164,16 +164,16 @@ export default function Register() {
    
    
   return (
-    <div className='container' style={{marginTop:"7%"}} >
-        <div className='d-flex justify-content-end' style={{opacity:loadingSuccess}}>
-                <p className='px-3 py-2 d-flex align-items-center rounded-2'  style={{backgroundColor:"#DFF2BF"}}><span className='text-white bg-success rounded-circle  d-flex justify-content-center align-items-center' style={{width:"25px",height:"25px"}}><i className="fa fa-check"></i></span>
-                <span className='mx-3'>Success</span>
-                </p>
-            </div>
-            <div className='d-flex justify-content-end' style={{opacity:loadingError}}>
-                <p className='px-3 py-2 d-flex align-items-center rounded-2' style={{backgroundColor:"#F8D7DA"}}><span className='text-white bg-danger rounded-circle  d-flex justify-content-center align-items-center' style={{width:"25px",height:"25px"}}>X</span>
-                <span className='mx-3 text-danger'>Fail Register</span>
-                </p>
+    <div className='container' style={{marginTop:"5%"}} >
+            <div className='d-flex justify-content-end' >
+                <div className='rounded-2 p-2' style={{backgroundColor:"#DFF2BF",display:loadingSuccess}}>
+                    <span className='text-white bg-success rounded-circle  px-2 py-1' style={{width:"25px",height:"25px"}}><i className="fa fa-check fs-6"></i></span>  
+                    <span className='mx-2'>Success</span>
+                </div> 
+                <div className='rounded-2 p-2' style={{backgroundColor:"#F8D7DA",display:loadingError}}>
+                    <span className='text-white bg-danger rounded-circle  px-2 py-1' style={{width:"25px",height:"25px"}}>X</span>  
+                    <span className='mx-2 text-danger'>Fail Register</span>
+                </div>       
             </div>
             <div className='row mt-5'>
                 <div className='col-12 col-sm-12 col-md-12'>
