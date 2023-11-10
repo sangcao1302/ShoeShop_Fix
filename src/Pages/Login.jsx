@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { loginApi } from '../Redux/reducers/LoginReducer';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function Login() {
     const {login}=useSelector(state=>state.LoginReducer)
+    const{register}=useSelector(state=>state.RegisterReducer)
     console.log(login)
+    const[display,setDisplay]=useState("0")
     const dispatch=useDispatch()
     const [info,setInfo] = useState({
         email:"",
@@ -25,8 +27,11 @@ export default function Login() {
         e.preventDefault()
         apiLogin() 
     }
+    useEffect(()=>{
+     
+    },[])
   return (
-    <div className='container mt-3' style={{minHeight:"58.8vh"}}>
+    <div className='container' style={{minHeight:"58.8vh",marginTop:"7%"}}>
         <div className='row g-0' >
             <div className='col-12 col-sm-5 col-md-5 text-end'>
                     <img src="../assets/login/login-image.jpg" className='rounded-start-2 w-100 h-100' style={{objectFit:"cover"}}  alt="" />

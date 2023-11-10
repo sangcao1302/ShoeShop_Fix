@@ -2,20 +2,28 @@ import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import { postRegisterApi } from '../Redux/reducers/RegisterReducer'
+import { NavLink, Navigate } from 'react-router-dom'
+import {  postRegisterApi } from '../Redux/reducers/RegisterReducer'
+import { history } from '../index.js'
 
 export default function Register() {
     const{register}=useSelector(state=>state.RegisterReducer)
     console.log(register)
-    const [error,setError]=useState({})
-    const [info,setInfo]=useState({})
-    const [loading,setLoading]=useState(false)
+    
+    const [error,setError]=useState({email:"",name:"",phone:"",password:"",passwordCheck:""})
+    const [info,setInfo]=useState({email:"",name:"",phone:"",password:"",passwordCheck:""})
+    const [loadingSuccess,setLoadingSucess]=useState("0")
+    const [loadingError,setLoadingError]=useState("0")
+    const [inputValue, setInputValue] = useState("");
+   
+    
+
+  
     const dispatch=useDispatch()
     const handleChange=(e)=>{
        
         const regetPassword=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/
-           const regexEmail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/ 
+        const regexEmail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/ 
         let {id,value}=e.target
         info[id]=value
         if(info[id]==="")
@@ -106,7 +114,7 @@ export default function Register() {
                                 <span className='text-danger'>{error.passwordCheck}</span>
                            </div> 
                            <div className='btn-submit p-0 border-0'>
-                                <button  type="submit" className='w-100 bg-black text-white p-1 fs-5 fw-bold rounded-3'>Register</button>
+                                <button type="btn" className='w-100 bg-danger text-white p-1 fs-5 fw-bold rounded-3'>Register</button>
                             </div>              
             </>
         )      
@@ -115,18 +123,61 @@ export default function Register() {
     const getApiRegistePost=()=>{
         const action=postRegisterApi(info)
         dispatch(action)
-    }
-    const handleSubmit=(e)=>{
-      e.preventDefault()
-      getApiRegistePost()
-    }
-    
-  return (
-    <div className='container mt-3' >
        
+    }
+
+    const handleSubmit=async(e)=>{
+      e.preventDefault()
+      const checkEmty = Object.values(info).every(value => {
+        if (value==="") {
+          history.push('/register')
+          return false
+        }
+        return true;
+      })
+      const checkEmtyError=Object.values(error).every(value => {
+        if (value!=="") {
+          return false;
+        }
+        return true;
+      })
+      if(checkEmty && checkEmtyError){
+         getApiRegistePost()     
+      }         
+    }
+    useEffect(()=>{
+        if(register==="Email đã được sử dụng!"){
+            setLoadingError("1")
+            setTimeout(()=>{
+                setLoadingError("0")
+            },2000)
+        }
+        if(register==="Đăng ký tài khoản thành công!"){
+            setLoadingSucess("1")
+            setTimeout(()=>{
+                setLoadingSucess("0")
+                history.push("/login")
+                window.location.reload()
+            },2000)
+        }
+    },[register])
+   
+   
+  return (
+    <div className='container' style={{marginTop:"7%"}} >
+        <div className='d-flex justify-content-end' style={{opacity:loadingSuccess}}>
+                <p className='px-3 py-2 d-flex align-items-center rounded-2'  style={{backgroundColor:"#DFF2BF"}}><span className='text-white bg-success rounded-circle  d-flex justify-content-center align-items-center' style={{width:"25px",height:"25px"}}><i className="fa fa-check"></i></span>
+                <span className='mx-3'>Success</span>
+                </p>
+            </div>
+            <div className='d-flex justify-content-end' style={{opacity:loadingError}}>
+                <p className='px-3 py-2 d-flex align-items-center rounded-2' style={{backgroundColor:"#F8D7DA"}}><span className='text-white bg-danger rounded-circle  d-flex justify-content-center align-items-center' style={{width:"25px",height:"25px"}}>X</span>
+                <span className='mx-3 text-danger'>Fail Register</span>
+                </p>
+            </div>
             <div className='row mt-5'>
                 <div className='col-12 col-sm-12 col-md-12'>
-                    <form className='w-50 mx-auto border-2 border p-4 my-auto rounded-4' onSubmit={handleSubmit} >
+                    <form className='w-75 mx-auto border-2 border p-4 my-auto rounded-4' onSubmit={handleSubmit} >
                         <div className='img-logo text-center'>
                             <img src="../assets/image/Logo.png" className='w-25' alt="" />
                         </div>

@@ -15,7 +15,7 @@ export default function Product() {
     getApi()
   },[])
   return (
-    <div className='container' style={{marginTop:"5%"}}>
+    <div className='container' style={{marginTop:"7%"}}>
       <div className="img" style={{backgroundImage:"url(/assets/image/sub_image.jpg)",backgroundSize:"cover",height:"200px",backgroundPosition:"center"}}>
        <h1 className='text-center text-white' style={{lineHeight:"220px"}}>Product</h1>
       </div>

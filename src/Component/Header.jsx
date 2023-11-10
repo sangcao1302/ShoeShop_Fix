@@ -174,6 +174,7 @@ export default function Header() {
       );
     }
   };
+  
  
   return (
     <div
@@ -184,7 +185,7 @@ export default function Header() {
         left: "0",
         right: "0",
         zIndex: "1",
-        maxHeight: "65px",
+        maxHeight: "100px",
       }}
     >
       <nav className="navbar navbar-expand-lg navbar-light w-100">
@@ -205,7 +206,7 @@ export default function Header() {
             <span className="navbar-toggler-icon" />
           </button>
           <div
-            className="collapse navbar-collapse justify-content-center bg-white w-100 p-3"
+            className="collapse navbar-collapse justify-content-center bg-white p-3"
             id="navbarCenteredExample"
           >
             <ul className="navbar-nav mb-2 mb-lg-0 fs-5 fw-bold ">
