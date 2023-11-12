@@ -8,7 +8,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { addProduct } from '../Redux/reducers/CartReducer'
 export default function Detail() {
     const{detailProduct}=useSelector(state=>state.DetailReducer)
-    console.log(detailProduct)
     const param=useParams()
     const dispatch=useDispatch()
     const getDetailProductApi=()=>{

@@ -7,18 +7,12 @@ import {  postRegisterApi } from '../Redux/reducers/RegisterReducer'
 import { history } from '../index.js'
 
 export default function Register() {
-    const{register}=useSelector(state=>state.RegisterReducer)
-    console.log(register)
-    
+    const{register}=useSelector(state=>state.RegisterReducer)    
     const [error,setError]=useState({email:"",name:"",phone:"",password:"",passwordCheck:""})
     const [info,setInfo]=useState({email:"",name:"",phone:"",password:"",passwordCheck:""})
     const [loadingSuccess,setLoadingSucess]=useState("none")
     const [loadingError,setLoadingError]=useState("none")
-    const [inputValue, setInputValue] = useState("");
-   
-    
-
-  
+    const [inputValue, setInputValue] = useState("");  
     const dispatch=useDispatch()
     const handleChange=(e)=>{
        
@@ -164,7 +158,7 @@ export default function Register() {
    
    
   return (
-    <div className='container' style={{marginTop:"5%"}} >
+    <div className='container' style={{marginTop:"6%"}} >
             <div className='d-flex justify-content-end' >
                 <div className='rounded-2 p-2' style={{backgroundColor:"#DFF2BF",display:loadingSuccess}}>
                     <span className='text-white bg-success rounded-circle  px-2 py-1' style={{width:"25px",height:"25px"}}><i className="fa fa-check fs-6"></i></span>  

@@ -5,7 +5,6 @@ import { USER_LOGIN, getStorageJson } from '../Util/config'
 
 export default function Cart() {
     let{arrCart,cartPost}=useSelector(state=>state.CartReducer)
-    console.log(cartPost)
     let{login}=useSelector(state=>state.LoginReducer)
     let [order,setOrder]=useState({   
         "orderDetail": [],
@@ -13,7 +12,6 @@ export default function Cart() {
     })
     let [display,setDisplay]=useState("0")
     let [error,setError]=useState("0")
-    console.log(order)
     const dispatch=useDispatch()
     const handleUp=(id)=>{
       const action=quantityUp(id)

@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function Login() {
     const {login}=useSelector(state=>state.LoginReducer)
     const{register}=useSelector(state=>state.RegisterReducer)
-    console.log(login)
     const[display,setDisplay]=useState("0")
     const dispatch=useDispatch()
     const [info,setInfo] = useState({

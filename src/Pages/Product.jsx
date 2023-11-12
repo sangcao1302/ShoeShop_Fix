@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom'
 
 export default function Product() {
   let{ productAll}=useSelector(state=>state.ProductReducer)
-  console.log(productAll)
   const dispatch=useDispatch()
   const getApi=()=>{
     const action=getApiProductAll()

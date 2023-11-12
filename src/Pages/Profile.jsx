@@ -4,12 +4,8 @@ import { getProfileApi, updateProfileApi } from '../Redux/reducers/ProfileReduce
 
 export default function Profile() {
     let{profile,postProfile}=useSelector(state=>state.ProfileReducer)
- 
-    console.log(postProfile)
     const[updateProfile,setUpdateProfile]=useState({})
-    const [display,setDisplay]=useState(0)
-    console.log(profile)
-   
+    const [display,setDisplay]=useState(0)   
     const dispatch=useDispatch()
     const getApiProfile=()=>{
         const action=getProfileApi()
@@ -21,8 +17,6 @@ export default function Profile() {
         updateProfile["name"]=profile.name
         updateProfile["phone"]=profile.phone
         updateProfile[id]=value  
-        console.log(updateProfile)
-
     }
     const alert=()=>{
         setDisplay(1)
